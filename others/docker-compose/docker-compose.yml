@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+  app:
+    image: spring-security-basic-flow:latest
+    environment:
+      - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+      - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
+      - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
+      - WAIT_HOSTS=mysql:3306
+    ports:
+      - "8080:8080"
